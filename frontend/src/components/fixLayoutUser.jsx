@@ -9,6 +9,7 @@ import { jwtDecode } from "jwt-decode";
 const LayoutUser = ({ children }) => {
   const [userRole, setUserRole] = useState("Customer");
 
+  
   useEffect(() => {
     const checkUserRole = () => {
       const token = Cookies.get("loginCookie");
