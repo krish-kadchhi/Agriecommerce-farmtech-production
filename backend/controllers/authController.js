@@ -211,7 +211,8 @@ const authController = {
       await user.save({ validateBeforeSave: false });
 
       // Create reset URL
-      const resetUrl = `${"http://localhost:5173"}/reset-password/${resetToken}`;
+      const baseUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+      const resetUrl = `${baseUrl}/reset-password/${resetToken}`;
 
       // Send email with reset link
       const auth = nodemailer.createTransport({
