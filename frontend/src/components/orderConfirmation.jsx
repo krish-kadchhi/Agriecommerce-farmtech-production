@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { jwtDecode } from "jwt-decode";
+import API_ENDPOINTS from "../config/api.js";
 import { 
   Container,
   Paper,
@@ -72,7 +73,7 @@ function OrderConfirmation() {
         const decoded = jwtDecode(token);
         const userId = decoded._id;
 
-        const response = await axios.get(`http://localhost:8080/orders/latest/${userId}`, {
+        const response = await axios.get(`${API_ENDPOINTS.ORDERS.LATEST_ORDER}/${userId}`, {
           withCredentials: true
         });
 

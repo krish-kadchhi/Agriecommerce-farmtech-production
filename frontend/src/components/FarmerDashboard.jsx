@@ -1,6 +1,7 @@
 // FarmerProductDemand.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_ENDPOINTS from "../config/api.js";
 import { 
   Container, Grid, Paper, Typography, Box, 
   Table, TableBody, TableCell, TableContainer, 
@@ -52,7 +53,7 @@ function FarmerProductDemand() {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get('http://localhost:8080/orders/all');
+      const response = await axios.get(API_ENDPOINTS.ORDERS.ALL_ORDERS);
       
       if (!response.data || !response.data.success || !Array.isArray(response.data.orders)) {
         console.error("Invalid response format:", response.data);

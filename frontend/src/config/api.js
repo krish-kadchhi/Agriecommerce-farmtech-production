@@ -23,12 +23,13 @@ const getApiBaseUrl = () => {
       EDIT_PROFILE: `${API_BASE_URL}/auth/edit-profile`,
       ALL_USERS: `${API_BASE_URL}/auth/allusers`,
     },
-    ITEMS: {
-      SHOW_PRODUCTS: `${API_BASE_URL}/item/showPro`,
-      ALL_PRODUCTS: `${API_BASE_URL}/item/all-products`,
-      ADD_PRODUCT: `${API_BASE_URL}/item/add`,
-      EDIT_PRODUCT: `${API_BASE_URL}/item/edit`,
-    },
+      ITEMS: {
+    SHOW_PRODUCTS: `${API_BASE_URL}/item/showPro`,
+    ALL_PRODUCTS: `${API_BASE_URL}/item/all-products`,
+    ADD_PRODUCT: `${API_BASE_URL}/item/add`,
+    EDIT_PRODUCT: `${API_BASE_URL}/item/edit`,
+    SEARCH_PRODUCT: `${API_BASE_URL}/item/searchProduct`,
+  },
     CART: {
       SHOW_CART: `${API_BASE_URL}/cart/showCart`,
       SHOW_ITEMS: `${API_BASE_URL}/cart/showItem`,

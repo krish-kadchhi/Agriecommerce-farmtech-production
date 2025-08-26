@@ -1,6 +1,7 @@
 // AdminDashboard.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_ENDPOINTS from "../config/api.js";
 import {
   Container,
   Grid,
@@ -145,7 +146,7 @@ function AdminDashboard() {
   ];
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/orders/all");
+      const response = await axios.get(API_ENDPOINTS.ORDERS.ALL_ORDERS);
 
       if (
         !response.data ||
@@ -168,7 +169,7 @@ function AdminDashboard() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/auth/allusers");
+      const response = await axios.get(API_ENDPOINTS.AUTH.ALL_USERS);
 
       if (
         response.data &&
@@ -193,7 +194,7 @@ function AdminDashboard() {
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/orders/user/${userId}`
+        `${API_ENDPOINTS.ORDERS.USER_ORDERS}/${userId}`
       );
 
       if (response.data && Array.isArray(response.data.orders)) {

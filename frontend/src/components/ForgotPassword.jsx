@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import axios from "axios"
+import API_ENDPOINTS from "../config/api.js"
 import {
   Button,
   TextField,
@@ -76,7 +77,7 @@ export default function ForgotPassword() {
 
     setLoading(true)
     try {
-      const response = await axios.post("http://localhost:8080/auth/forgot-password", { email })
+      const response = await axios.post(API_ENDPOINTS.AUTH.FORGOT_PASSWORD, { email })
       setSuccess(true)
       setError("")
     } catch (err) {

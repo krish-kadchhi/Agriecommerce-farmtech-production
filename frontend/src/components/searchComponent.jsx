@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import API_ENDPOINTS from "../config/api.js";
 import {
   Card,
   CardMedia,
@@ -18,7 +19,7 @@ const SearchComponent = () => {
   const fetchResults = async (searchQuery) => {
    try {
      const response = await axios.get(
-       `http://localhost:8080/item/searchProduct?query=${searchQuery}`
+       `${API_ENDPOINTS.ITEMS.SEARCH_PRODUCT}?query=${searchQuery}`
      );
 
      // Filter for "fruit" category (case-insensitive)
@@ -40,7 +41,7 @@ const SearchComponent = () => {
     };
 
     try {
-      await axios.post("http://localhost:8080/cart/addCart", data, {
+      await axios.post(API_ENDPOINTS.CART.ADD_TO_CART, data, {
         withCredentials: true, // For sending cookies
       });
       console.log("Item added to cart successfully");

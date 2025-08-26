@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
+import API_ENDPOINTS from "../config/api.js"
 import {
   Button,
   TextField,
@@ -114,7 +115,7 @@ export default function Signup() {
 
     setLoading(true)
     try {
-      const response = await axios.post("http://localhost:8080/auth/signup", formData)
+      const response = await axios.post(API_ENDPOINTS.AUTH.SIGNUP, formData)
       console.log(response.data)
       setTimeout(() => {
         navigate("/verifyOtp")
@@ -297,8 +298,8 @@ export default function Signup() {
               <Typography variant="body1" align="center" sx={{ mt: 2 }}>
                 Already have an account?{" "}
                 <Typography
-                  component="a"
-                  href="/login"
+                  component={Link}
+                  to="/login"
                   color="primary"
                   sx={{
                     textDecoration: "none",

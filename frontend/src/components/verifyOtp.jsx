@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_ENDPOINTS from "../config/api.js";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 
@@ -35,7 +36,7 @@ function VerifyOtp() {
         try {
             console.log("Sending User ID:", userData.userId);
             const response = await axios.post(
-                "http://localhost:8080/auth/verifyOtp",
+                API_ENDPOINTS.AUTH.VERIFY_OTP,
                 { userId: userData.userId, otp },
                 { headers: { "Content-Type": "application/json" } }
             );

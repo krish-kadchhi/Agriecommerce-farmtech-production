@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_ENDPOINTS from "../config/api.js";
 import {
   Button,
   TextField,
@@ -120,7 +121,7 @@ export default function Login() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/login",
+        API_ENDPOINTS.AUTH.LOGIN,
         formData,
         {
           withCredentials: true,

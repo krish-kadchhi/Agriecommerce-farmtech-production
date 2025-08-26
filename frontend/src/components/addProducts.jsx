@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_ENDPOINTS from "../config/api.js";
 import {
   Button,
   TextField,
@@ -182,7 +183,7 @@ export default function AddProduct() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/item/add",
+        API_ENDPOINTS.ITEMS.ADD_PRODUCT,
         formData,
         {
           withCredentials: true,

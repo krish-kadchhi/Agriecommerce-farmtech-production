@@ -3,6 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "sonner";
+import API_ENDPOINTS from "../config/api.js";
 import {
   Container,
   Typography,
@@ -89,7 +90,7 @@ export default function Vegetable() {
       image: vegetable.image,
     };
     try {
-      const res = await axios.post("http://localhost:8080/cart/addCart", data, {
+      const res = await axios.post(API_ENDPOINTS.CART.ADD_TO_CART, data, {
         withCredentials: true,
       });
       toast.success("Item added to cart");
@@ -121,11 +122,11 @@ export default function Vegetable() {
   const fetchProducts = async (location = null) => {
     setIsLoading(true);
     try {
-      let url = "http://localhost:8080/item/showPro";
+      let url = API_ENDPOINTS.ITEMS.SHOW_PRODUCTS;
       
       // If location is provided, add it as query parameter
       if (location) {
-        url = `http://localhost:8080/item/showPro?district=${location}`;
+        url = `${API_ENDPOINTS.ITEMS.SHOW_PRODUCTS}?district=${location}`;
       }
       
       const response = await axios.get(url, { withCredentials: true });

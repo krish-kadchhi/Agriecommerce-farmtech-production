@@ -3,6 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
+import API_ENDPOINTS from "../config/api.js";
 import {
   Button,
   Table,
@@ -103,7 +104,7 @@ export default function Cart() {
   const fetchCartItems = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:8080/cart/showCart");
+      const response = await axios.get(API_ENDPOINTS.CART.SHOW_CART);
       const itemsWithQuantity = response.data.map((item) => ({
         ...item,
         id: uuidv4(),
@@ -111,7 +112,7 @@ export default function Cart() {
       }));
       setCartItems(itemsWithQuantity);
 
-      const response2 = await axios.get("http://localhost:8080/cart/showItem");
+      const response2 = await axios.get(API_ENDPOINTS.CART.SHOW_ITEMS);
       setMaxItem(response2.data);
     } catch (error) {
       setAlert({
@@ -177,7 +178,7 @@ export default function Cart() {
 
   const handleRemoveItem = async (item) => {
     try {
-      await axios.post("http://localhost:8080/cart/deleteCart", {
+      await axios.post(API_ENDPOINTS.CART.DELETE_FROM_CART, {
         item: item.item,
       });
       fetchCartItems();

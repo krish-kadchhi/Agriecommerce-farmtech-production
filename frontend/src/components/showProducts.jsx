@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
+import API_ENDPOINTS from "../config/api.js";
 import { toast } from "sonner";
 import {
   Container,
@@ -59,7 +60,7 @@ export default function ProductShow() {
 
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/item/showPro", {
+        const response = await axios.get(API_ENDPOINTS.ITEMS.SHOW_PRODUCTS, {
           withCredentials: true,
         });
         setData(response.data);

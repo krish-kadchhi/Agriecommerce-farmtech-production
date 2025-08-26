@@ -27,6 +27,7 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import { toast } from 'sonner';
+import API_ENDPOINTS from "../config/api.js";
 
 // TabPanel component for different sections
 function TabPanel({ children, value, index, ...other }) {
@@ -68,7 +69,7 @@ const EditProducts = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/item/all-products');
+      const response = await axios.get(API_ENDPOINTS.ITEMS.ALL_PRODUCTS);
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -114,7 +115,7 @@ const EditProducts = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/item/edit/${selectedProduct._id}`, editForm);
+      await axios.put(`${API_ENDPOINTS.ITEMS.EDIT_PRODUCT}/${selectedProduct._id}`, editForm);
       setOpenDialog(false);
       fetchProducts();
       toast.success('Product updated successfully');

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
+import API_ENDPOINTS from "../config/api.js"
 import {
   Button,
   TextField,
@@ -112,7 +113,7 @@ export default function ResetPassword() {
 
     setLoading(true)
     try {
-        await axios.post(`http://localhost:8080/auth/reset-password/${token}`, {
+        await axios.post(`${API_ENDPOINTS.AUTH.RESET_PASSWORD}/${token}`, {
             newPassword: password
           })
       setSuccess(true)

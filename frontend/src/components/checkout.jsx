@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate, useLocation } from "react-router-dom";
+import API_ENDPOINTS from "../config/api.js";
 import { jwtDecode } from "jwt-decode";
 import {
   Card,
@@ -78,7 +79,7 @@ function Checkout() {
 
   const fetchCartItems = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/cart/showCart", {
+      const response = await axios.get(API_ENDPOINTS.CART.SHOW_CART, {
         withCredentials: true
       });
       
@@ -136,7 +137,7 @@ function Checkout() {
 
       // Create order
       const orderResponse = await axios.post(
-        "http://localhost:8080/payment/checkout",
+        API_ENDPOINTS.PAYMENT.CHECKOUT,
         {
           amount: total,
           cartItems,
@@ -177,7 +178,7 @@ function Checkout() {
             
             // Fixed typo in URL from second code snippet
             const verificationResponse = await axios.post(
-              "http://localhost:8080/payment/verify-payment", 
+              API_ENDPOINTS.PAYMENT.VERIFY_PAYMENT, 
               paymentData,
               { withCredentials: true }
             );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_ENDPOINTS from "../config/api.js";
 import {
   Box,
   Typography,
@@ -117,7 +118,7 @@ function ProfilePage() {
     setLoading(true);
     try {
       const response = await axios.put(
-        "http://localhost:8080/auth/edit-profile",
+        API_ENDPOINTS.AUTH.EDIT_PROFILE,
         updatedData,
         {
           withCredentials: true
